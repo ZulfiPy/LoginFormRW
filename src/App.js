@@ -1,8 +1,16 @@
-import './App.css';
+import Login from "./components/Login";
+import Register from "./components/Register";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
-    <p>init project</p>
+    <div>
+      <Helmet>
+        <title>Auth</title>
+      </Helmet>
+      {/* Render Login or Register form down below */}
+      <Register />
+    </div>
   );
 }
 
