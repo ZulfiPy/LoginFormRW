@@ -1,9 +1,15 @@
-
+import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEye } from '@fortawesome/free-solid-svg-icons';
 import gradBg from "../assets/img/beautiful-colorful-gradient-background-combination-of-bright-colors-soft-and-smooth-texture-used-for-background-free-vector.jpg"
 
 const Login = () => {
+    const [displayPassword, setDisplayPassword] = useState(false);
+
+    const handleDisplayPassword = () => {
+        setDisplayPassword(!displayPassword);
+    };
+
     return (
         <div className="auth">
             <img src={gradBg} alt="img" className="auth__bg" />
@@ -16,7 +22,7 @@ const Login = () => {
                     <div className="auth__box">
                         <label htmlFor="username">Username:</label>
                         <div className="auth__input__box">
-                            <input type="text" placeholder="username" required className="auth__input" />
+                            <input type="text" placeholder="username" required className="auth__input" id="username" />
                             <FontAwesomeIcon icon={faUser} />
                         </div>
                     </div>
@@ -24,8 +30,10 @@ const Login = () => {
                     <div className="auth__box">
                         <label htmlFor="password">Password:</label>
                         <div className="auth__input__box">
-                            <input type="password" placeholder="password" required className="auth__input" />
-                            <FontAwesomeIcon icon={faKey} />
+                            <input type={!displayPassword ? "password" : "text"} placeholder="password" required className="auth__input" id="password" />
+                            <button type="button" className={!displayPassword ? 'login__password__hide' : 'login__password__display'} onClick={handleDisplayPassword}>
+                                <FontAwesomeIcon icon={faEye} />
+                            </button>
                         </div>
                     </div>
 
