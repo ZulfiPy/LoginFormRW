@@ -219,6 +219,38 @@ body {
   text-decoration: underline;
 }
 
+/* ================== LOGIN PASSWORD DISPLAY STYLING ================== */
+
+.login__password__display {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.login__password__hide {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration-line: line-through;
+  border: none;
+  outline: none;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login__password__hide::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transform: rotate(45deg);
+}
+
 /* ================== BREAKPOINTS ================== */
 /* For medium devices */
 @media screen and (min-width: 576px) {
@@ -235,3 +267,5 @@ body {
     margin-bottom: 2rem;
   }
 }
+
+/* ================== TEST BEFORE COMMIT ================== */
