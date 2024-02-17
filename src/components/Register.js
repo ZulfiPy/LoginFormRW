@@ -34,7 +34,7 @@ const Register = () => {
     const [success, setSuccess] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
 
-    const submitForm = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
         try {
             const response = await axiosPrivate.post('/register',
@@ -54,7 +54,7 @@ const Register = () => {
             setFirstName('');
             setLastName('');
             setBirthDate('');
-            
+
             console.log(JSON.stringify(response));
         } catch (err) {
             console.log('registration failed:', err?.response);
@@ -69,7 +69,7 @@ const Register = () => {
     }
 
     useEffect(() => {
-        userRef.current.focus()
+        userRef.current.focus();
     }, []);
 
     useEffect(() => {
@@ -90,178 +90,180 @@ const Register = () => {
     }, [birthDate]);
 
     return (
-        <section className="auth">
-            <h1 className="auth__title">Register</h1>
-            <section>
-                <p className={errorMsg ? "auth__errMsg" : "offScreen"}><
-                    FontAwesomeIcon icon={faInfoCircle} />
+        <div className="auth">
+            <section className="auth__section">
+                <h1 className="auth__title">Register</h1>
+
+                <p className={errorMsg ? "auth__errMsg" : "offScreen"}>
+                    <FontAwesomeIcon icon={faInfoCircle} />
                     {errorMsg}
                 </p>
-            </section>
-            <form className="auth__form" onSubmit={submitForm}>
 
-                <div className="auth__inputs">
+                <form className="auth__form" onSubmit={handleRegister}>
 
-                    <section className="auth__box">
-                        <label htmlFor="username">
-                            Username:
-                            <FontAwesomeIcon icon={faCheck} className={validUsername ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={!validUsername && username ? "invalid" : "hide"} />
-                        </label>
-                        <section className="auth__input__box">
-                            <input
-                                type="text"
-                                id="username"
-                                placeholder="username"
-                                required
-                                className="auth__input"
-                                autoComplete="off"
-                                ref={userRef}
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                onFocus={() => setUsernameFocus(true)}
-                                onBlur={() => setUsernameFocus(false)}
-                            />
-                            <FontAwesomeIcon icon={faUser} />
+                    <div className="auth__inputs">
+
+                        <section className="auth__box">
+                            <label htmlFor="username">
+                                Username:
+                                <FontAwesomeIcon icon={faCheck} className={validUsername ? "valid" : "hide"} />
+                                <FontAwesomeIcon icon={faTimes} className={!validUsername && username ? "invalid" : "hide"} />
+                            </label>
+                            <section className="auth__input__box">
+                                <input
+                                    type="text"
+                                    id="username"
+                                    placeholder="username"
+                                    required
+                                    className="auth__input"
+                                    autoComplete="off"
+                                    ref={userRef}
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    onFocus={() => setUsernameFocus(true)}
+                                    onBlur={() => setUsernameFocus(false)}
+                                />
+                                <FontAwesomeIcon icon={faUser} />
+                            </section>
+                            <p className={usernameFocus && !validUsername ? "instructions" : "offScreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle} />
+                                4 to 24 characters.<br />
+                                Must begin with a letter.<br />
+                                Letters, numbers, underscores, hyphens allowed.
+                            </p>
                         </section>
-                        <p className={usernameFocus && !validUsername ? "instructions" : "offScreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            4 to 24 characters.<br />
-                            Must begin with a letter.<br />
-                            Letters, numbers, underscores, hyphens allowed.
-                        </p>
-                    </section>
 
-                    <section className="auth__box">
-                        <label htmlFor="password">
-                            Password:
-                            <FontAwesomeIcon icon={faCheck} className={validPassword ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={!validPassword && password ? "invalid" : "hide"} />
-                        </label>
-                        <section className="auth__input__box">
-                            <input
-                                type="password"
-                                id="password"
-                                placeholder="password"
-                                required
-                                className="auth__input"
-                                autoComplete="off"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                onFocus={() => setPasswordFocus(true)}
-                                onBlur={() => setPasswordFocus(false)}
-                            />
-                            <FontAwesomeIcon icon={faKey} />
+                        <section className="auth__box">
+                            <label htmlFor="password">
+                                Password:
+                                <FontAwesomeIcon icon={faCheck} className={validPassword ? "valid" : "hide"} />
+                                <FontAwesomeIcon icon={faTimes} className={!validPassword && password ? "invalid" : "hide"} />
+                            </label>
+                            <section className="auth__input__box">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="password"
+                                    required
+                                    className="auth__input"
+                                    autoComplete="off"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    onFocus={() => setPasswordFocus(true)}
+                                    onBlur={() => setPasswordFocus(false)}
+                                />
+                                <FontAwesomeIcon icon={faKey} />
+                            </section>
+                            <p className={passwordFocus && !validPassword ? "instructions" : "offScreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle} />
+                                8 to 24 characters.<br />
+                                Must include uppercase and lowercase letters, a number and a special character.<br />
+                                Allowed special characters: ! @ # $ %
+                            </p>
                         </section>
-                        <p className={passwordFocus && !validPassword ? "instructions" : "offScreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            8 to 24 characters.<br />
-                            Must include uppercase and lowercase letters, a number and a special character.<br />
-                            Allowed special characters: ! @ # $ %
-                        </p>
-                    </section>
 
-                    <section className="auth__box">
-                        <label htmlFor="confirmPassword">
-                            Confirm Password:
-                            <FontAwesomeIcon icon={faCheck} className={validMatch ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={!validMatch ? "invalid" : "hide"} />
-                        </label>
-                        <section className="auth__input__box">
-                            <input
-                                type="password"
-                                id="confirmPassowrd"
-                                placeholder="confirm password"
-                                required
-                                className="auth__input"
-                                autoComplete="off"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                                onFocus={() => setConfirmPasswordFocus(true)}
-                                onBlur={() => setConfirmPasswordFocus(false)}
-                            />
-                            <FontAwesomeIcon icon={faLock} />
+                        <section className="auth__box">
+                            <label htmlFor="confirmPassword">
+                                Confirm Password:
+                                <FontAwesomeIcon icon={faCheck} className={validMatch ? "valid" : "hide"} />
+                                <FontAwesomeIcon icon={faTimes} className={!validMatch ? "invalid" : "hide"} />
+                            </label>
+                            <section className="auth__input__box">
+                                <input
+                                    type="password"
+                                    id="confirmPassowrd"
+                                    placeholder="confirm password"
+                                    required
+                                    className="auth__input"
+                                    autoComplete="off"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    onFocus={() => setConfirmPasswordFocus(true)}
+                                    onBlur={() => setConfirmPasswordFocus(false)}
+                                />
+                                <FontAwesomeIcon icon={faLock} />
+                            </section>
+                            <p className={confirmPasswordFocus && !validMatch ? "instructions" : "offScreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle} />
+                                Must match the first password input field.
+                            </p>
                         </section>
-                        <p className={confirmPasswordFocus && !validMatch ? "instructions" : "offScreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            Must match the first password input field.
-                        </p>
-                    </section>
 
-                    <section className="auth__box">
-                        <label htmlFor="firstname">First Name:</label>
-                        <section className="auth__input__box">
-                            <input
-                                type="text"
-                                id="firstname"
-                                placeholder="first name"
-                                required
-                                className="auth__input"
-                                autoComplete="off"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-                            <FontAwesomeIcon icon={faA} />
+                        <section className="auth__box">
+                            <label htmlFor="firstname">First Name:</label>
+                            <section className="auth__input__box">
+                                <input
+                                    type="text"
+                                    id="firstname"
+                                    placeholder="first name"
+                                    required
+                                    className="auth__input"
+                                    autoComplete="off"
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                />
+                                <FontAwesomeIcon icon={faA} />
+                            </section>
                         </section>
-                    </section>
 
-                    <section className="auth__box">
-                        <label htmlFor="lastname">Last Name:</label>
-                        <section className="auth__input__box">
-                            <input
-                                type="text"
-                                id="lastname"
-                                placeholder="last name"
-                                required
-                                className="auth__input"
-                                autoComplete="off"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-                            <FontAwesomeIcon icon={faB} />
+                        <section className="auth__box">
+                            <label htmlFor="lastname">Last Name:</label>
+                            <section className="auth__input__box">
+                                <input
+                                    type="text"
+                                    id="lastname"
+                                    placeholder="last name"
+                                    required
+                                    className="auth__input"
+                                    autoComplete="off"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                />
+                                <FontAwesomeIcon icon={faB} />
+                            </section>
                         </section>
-                    </section>
 
-                    <section className="auth__box">
-                        <label htmlFor="birthData">
-                            Birth Date:
-                            <FontAwesomeIcon icon={faCheck} className={validBirthDate ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={birthDate && !validBirthDate ? "invalid" : "hide"} />
-                        </label>
-                        <section className="auth__input__box">
-                            <input
-                                type="text"
-                                id="birthDate"
-                                placeholder="birth date"
-                                required
-                                className="auth__input"
-                                autoComplete="off"
-                                value={birthDate}
-                                onChange={(e) => setBirthDate(e.target.value)}
-                                onFocus={() => setBirthDateFocus(true)}
-                                onBlur={() => setBirthDateFocus(false)}
-                            />
-                            <FontAwesomeIcon icon={faCalendarDays} />
+                        <section className="auth__box">
+                            <label htmlFor="birthData">
+                                Birth Date:
+                                <FontAwesomeIcon icon={faCheck} className={validBirthDate ? "valid" : "hide"} />
+                                <FontAwesomeIcon icon={faTimes} className={birthDate && !validBirthDate ? "invalid" : "hide"} />
+                            </label>
+                            <section className="auth__input__box">
+                                <input
+                                    type="text"
+                                    id="birthDate"
+                                    placeholder="birth date"
+                                    required
+                                    className="auth__input"
+                                    autoComplete="off"
+                                    value={birthDate}
+                                    onChange={(e) => setBirthDate(e.target.value)}
+                                    onFocus={() => setBirthDateFocus(true)}
+                                    onBlur={() => setBirthDateFocus(false)}
+                                />
+                                <FontAwesomeIcon icon={faCalendarDays} />
+                            </section>
+                            <p className={birthDateFocus && !validBirthDate ? "instructions" : "offScreen"}>
+                                <FontAwesomeIcon icon={faInfoCircle} />
+                                Birth date should be provided in the next format:<br />
+                                Format - dd.mm.yyyy<br />
+                                Example - 01.12.1999<br />
+                                dd - 01 - day<br />
+                                mm - 12 - month<br />
+                                yyyy - 1999 - year<br />
+                            </p>
                         </section>
-                        <p className={birthDateFocus && !validBirthDate ? "instructions" : "offScreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            Birth date should be provided in the next format:<br />
-                            Format - dd.mm.yyyy<br />
-                            Example - 01.12.1999<br />
-                            dd - 01 - day<br />
-                            mm - 12 - month<br />
-                            yyyy - 1999 - year<br />
-                        </p>
-                    </section>
 
-                    <button type="submit" className="auth__button">Register</button>
+                        <button type="submit" className="auth__button">Register</button>
 
-                    <div className="auth__log__reg">
-                        Already registered? <a href="true">Sign In</a>
+                        <div className="auth__log__reg">
+                            Already registered? <a href="true">Sign In</a>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </section>
+                </form>
+            </section>
+        </div>
     )
 }
 

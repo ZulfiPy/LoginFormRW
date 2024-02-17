@@ -54,7 +54,7 @@ body {
   position: relative;
 }
 
-.instructions > svg {
+.instructions>svg {
   margin-right: 0.25rem;
 }
 
@@ -82,6 +82,12 @@ body {
   position: relative;
   height: 100vh;
   display: grid;
+  align-items: center;
+}
+
+.auth__section {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
