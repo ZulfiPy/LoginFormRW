@@ -35,48 +35,6 @@ img {
   height: auto;
 }
 
-/* ================== Other ================== */
-
-body {
-  background: linear-gradient(217deg, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0) 70.71%),
-    linear-gradient(127deg, rgba(0, 21, 255, 0.8), rgba(0, 255, 0, 0) 70.71%),
-    linear-gradient(336deg, rgba(230, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
-}
-
-
-.instructions {
-  font-size: 0.85rem;
-  padding-inline: 1.25rem;
-  border: 2px solid black;
-  border-radius: 1rem;
-  background-color: whitesmoke;
-  color: #000;
-  position: relative;
-}
-
-.instructions>svg {
-  margin-right: 0.25rem;
-}
-
-.offScreen {
-  position: absolute;
-  left: -9999px;
-}
-
-.hide {
-  display: none;
-}
-
-.valid {
-  color: limegreen;
-  margin-left: 0.25rem;
-}
-
-.invalid {
-  color: red;
-  margin-left: 0.25rem;
-}
-
 /* ================== AUTH ================== */
 .auth {
   position: relative;
@@ -89,6 +47,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .auth__bg {
@@ -142,6 +101,11 @@ body {
   margin-bottom: 1rem;
 }
 
+.auth__box label {
+  color: var(--black-color);
+  cursor: pointer;
+}
+
 .auth__input__box {
   grid-template-columns: 1fr max-content;
   column-gap: .75rem;
@@ -179,18 +143,13 @@ body {
   cursor: pointer;
 }
 
+.auth__button:hover {
+  text-decoration: underline;
+}
+
 .auth__log__reg {
   font-size: var(--small-font-size);
   text-align: center;
-}
-
-.auth__log__reg a {
-  color: var(--white-color);
-  font-weight: 500;
-}
-
-.auth__log__reg a:hover {
-  text-decoration: underline;
 }
 
 /* ================== LOGIN ================== */
@@ -253,7 +212,7 @@ body {
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: black;
+  background-color: var(--black-color);
   transform: rotate(45deg);
 }
 
@@ -272,6 +231,184 @@ body {
   .auth__title {
     margin-bottom: 2rem;
   }
+}
+
+/* ================== CUSTOM ================== */
+
+body {
+  background: linear-gradient(217deg, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(127deg, rgba(0, 21, 255, 0.8), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(230, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+}
+
+.instructions {
+  font-size: 0.85rem;
+  padding-inline: 1.25rem;
+  border: 2px solid black;
+  border-radius: 1rem;
+  background-color: whitesmoke;
+  color: #000;
+  position: relative;
+}
+
+.instructions>svg {
+  margin-right: 0.25rem;
+}
+
+.offScreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.link__underlined_500 {
+  text-decoration: underline;
+  color: var(--black-color);
+  font-weight: 500;
+}
+
+.link__none {
+  text-decoration: none;
+  color: var(--black-color);
+  text-align: center;
+}
+
+.link__none:hover {
+  text-decoration: underline;
+}
+
+.page__title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  color: var(--white-color);
+}
+
+.page__main__button {
+  border: none;
+  outline: none;
+  max-width: 10rem;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--white-color);
+  border-radius: 4rem;
+  color: var(--black-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 0.15rem solid black;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.page__main__button:hover {
+  text-decoration: underline;
+}
+
+.effect__link {
+  color: #18272F;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+}
+
+.effect__link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #18272F;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .3s ease-in-out;
+}
+
+.effect__link:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+/* ================== LAYOUT ================== */
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ================== HOME ================== */
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* ================== ADMIN ================== */
+.admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================== EDITOR ================== */
+.editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================== LOUNGE ================== */
+.lounge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* ================== LINK PAGE ================== */
+.linkpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================== UNAUTHORIZED ================== */
+.unauthorized {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================== MISSING ================== */
+.missing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ================== TEST BEFORE COMMIT ================== */
