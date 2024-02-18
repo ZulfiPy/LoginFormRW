@@ -1,5 +1,6 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Routes, Route } from "react-router-dom";
+import ROLES_LIST from "./config/roles_list";
 import Layout from "./components/Layout";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -10,25 +11,43 @@ import Missing from "./components/Missing";
 import Admin from "./components/Admin";
 import Editor from "./components/Editor";
 import Lounge from "./components/Lounge";
+import RequireAuth from "./components/RequireAuth";
+
+const ROLES = {
+  'User': ROLES_LIST.User,
+  'Editor': ROLES_LIST.Editor,
+  'Admin': ROLES_LIST.Admin
+};
 
 function App() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Auth</title>
+        <title>RW-Rent</title>
       </Helmet>
       <Routes>
         <Route path="/" element={<Layout />} >
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="linkpage" element={<LinkPage />} />
-            <Route path="unauthorized" element={<Unauthorized />} />
-            <Route path="*" element={<Missing />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="linkpage" element={<LinkPage />} />
+          <Route path="unauthorized" element={<Unauthorized />} />
+          <Route path="*" element={<Missing />} />
 
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Editor, ROLES.User]} />} >
             <Route path="/" element={<Home />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/editor" element={<Editor />} />
-            <Route path="/lounge" element={<Lounge />} />
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />} >
+            <Route path="admin" element={<Admin />} />
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />} >
+            <Route path="editor" element={<Editor />} />
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Editor, ROLES.Admin]} />} >
+            <Route path="lounge" element={<Lounge />} />
+          </Route>
 
         </Route>
       </Routes>
