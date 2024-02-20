@@ -344,6 +344,10 @@ body {
   transform: scaleX(1);
 }
 
+.bold {
+  font-weight: 600;
+}
+
 /* ================== LAYOUT ================== */
 .app {
   display: flex;

@@ -16,16 +16,16 @@ const LinkPage = () => {
         <section className="linkpage">
             <h1 className="page__title">Link Page</h1>
 
-            <Link to="/" className="effect__link">Go to the Home page</Link>
+            <Link to="/" className="effect__link">Go to the <span className="bold">Home</span> page</Link>
             <br />
 
-            <Link to="/admin" className="effect__link">Go to the Admin page</Link>
+            <Link to="/admin" className="effect__link">Go to the <span className="bold">Admin</span> page</Link>
             <br />
 
-            <Link to="/editor" className="effect__link">Go to the Editor page</Link>
+            <Link to="/editor" className="effect__link">Go to the <span className="bold">Editor</span> page</Link>
             <br />
 
-            <Link to="/lounge" className="effect__link">Go to the Lounge</Link>
+            <Link to="/lounge" className="effect__link">Go to the <span className="bold">Lounge</span></Link>
 
             {auth?.accessToken
                 ? (
