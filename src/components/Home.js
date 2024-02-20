@@ -18,6 +18,9 @@ const Home =  () => {
             <Link to="/editor" className="effect__link"><span className="bold">Editor</span> page</Link>
             <br />
 
+            <Link to="/user" className="effect__link"><span className="bold">User</span> page</Link>
+            <br />
+
             <Link to="/linkpage" className="effect__link"><span className="bold">Link</span>  page</Link>
             <br />
 
