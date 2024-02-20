@@ -10,6 +10,8 @@ import Unauthorized from "./components/Unauthorized";
 import Missing from "./components/Missing";
 import Admin from "./components/Admin";
 import Editor from "./components/Editor";
+import User from "./components/User";
+import Customers from "./components/Customers";
 import Lounge from "./components/Lounge";
 import RequireAuth from "./components/RequireAuth";
 
@@ -37,12 +39,20 @@ function App() {
             <Route path="/" element={<Home />} />
           </Route>
 
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Editor, ROLES.User]} />}>
+            <Route path="customers" element={<Customers />} />
+          </Route>
+
           <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />} >
             <Route path="admin" element={<Admin />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />} >
             <Route path="editor" element={<Editor />} />
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Editor, ROLES.User]} />}>
+            <Route path="user" element={<User />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Editor, ROLES.Admin]} />} >
