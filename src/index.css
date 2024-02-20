@@ -236,7 +236,8 @@ img {
 /* ================== CUSTOM ================== */
 
 body {
-  background: linear-gradient(217deg, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0) 70.71%),
+  background:
+    linear-gradient(217deg, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0) 70.71%),
     linear-gradient(127deg, rgba(0, 21, 255, 0.8), rgba(0, 255, 0, 0) 70.71%),
     linear-gradient(336deg, rgba(230, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
 }
@@ -318,6 +319,28 @@ body {
   text-decoration: underline;
 }
 
+.back__button {
+  border: none;
+  outline: none;
+  max-width: 5rem;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--white-color);
+  border-radius: 4rem;
+  color: var(--black-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 0.15rem solid black;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.back__button:hover {
+  text-decoration: underline;
+}
+
 .effect__link {
   color: #18272F;
   position: relative;
@@ -342,6 +365,10 @@ body {
 .effect__link:hover::before {
   transform-origin: left;
   transform: scaleX(1);
+}
+
+.bold {
+  font-weight: 600;
 }
 
 /* ================== LAYOUT ================== */
@@ -376,6 +403,69 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* ================== USER ================== */
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* ================== CUSTOMERS ================== */
+.customers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  max-width: 900px;
+  width: 100%;
+  margin: auto;
+}
+
+.customers__table {
+  background: var(--black-color);
+  color: var(--white-color);
+  border-collapse: collapse;
+  border-radius: 0.3rem;
+  max-width: 850px;
+  width: 100%;
+  box-shadow: 0 5px 10px var(--white-color);
+  text-align: center;
+  border-collapse: collapse;
+  margin: auto;
+  height: 320px;
+  display: block;
+  overflow: auto;
+  padding: 0.25rem;
+}
+
+th {
+  color: #D5DDE5;
+  border-bottom: 2px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-weight: 100;
+  padding: 0.25rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+}
+
+th:first-child {
+  border-top-left-radius: 3px;
+}
+
+th:last-child {
+  border-top-right-radius: 100px;
+  border-right: none;
+}
+
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
 
 /* ================== LOUNGE ================== */

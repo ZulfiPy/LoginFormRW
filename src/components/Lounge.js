@@ -7,7 +7,7 @@ const Lounge = () => {
 
             <p>this is the page where the employees can access(user, editor and admin)</p>
 
-            <Link to="/" className="effect__link">Go to the Home page</Link>
+            <Link to="/" className="effect__link">Go to the <span className="bold">Home</span> page</Link>
             <button className="page__main__button" type="button">USER MODULES</button>
         </section>
     )

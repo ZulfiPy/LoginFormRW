@@ -3,7 +3,7 @@ import useLogout from "../hooks/useLogout";
 
 const Home =  () => {
     const logout = useLogout();
-    
+
     const signOut = async () => {
         await logout();
     }
@@ -12,15 +12,16 @@ const Home =  () => {
         <section className="home">
             <h1 className="page__title">Home</h1>
 
-            <p>You do not have an access to the requested page.</p>
-
-            <Link to="/admin" className="effect__link">Admin page</Link>
+            <Link to="/admin" className="effect__link"><span className="bold">Admin</span> page</Link>
             <br />
 
-            <Link to="/editor" className="effect__link">Editor page</Link>
+            <Link to="/editor" className="effect__link"><span className="bold">Editor</span> page</Link>
             <br />
 
-            <Link to="/linkpage" className="effect__link">Link page</Link>
+            <Link to="/user" className="effect__link"><span className="bold">User</span> page</Link>
+            <br />
+
+            <Link to="/linkpage" className="effect__link"><span className="bold">Link</span>  page</Link>
             <br />
 
             <button
