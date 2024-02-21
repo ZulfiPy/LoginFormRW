@@ -421,7 +421,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 500px;
-  max-width: 900px;
+  max-width: 950px;
   width: 100%;
   margin: auto;
 }
@@ -431,7 +431,7 @@ body {
   color: var(--white-color);
   border-collapse: collapse;
   border-radius: 0.3rem;
-  max-width: 850px;
+  max-width: 900px;
   width: 100%;
   box-shadow: 0 5px 10px var(--white-color);
   text-align: center;
@@ -443,7 +443,7 @@ body {
   padding: 0.25rem;
 }
 
-th {
+.customers__table th {
   color: #D5DDE5;
   border-bottom: 2px solid #9ea7af;
   border-right: 1px solid #343a45;
@@ -453,19 +453,23 @@ th {
   vertical-align: middle;
 }
 
-th:first-child {
+.customers__tabl th:first-child {
   border-top-left-radius: 3px;
 }
 
-th:last-child {
+.customers__tabl th:last-child {
   border-top-right-radius: 100px;
   border-right: none;
 }
 
-tr {
+.customers__table tbody tr {
   border-top: 1px solid #C1C3D1;
   border-bottom: 1px solid #C1C3D1;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+.customers__table tbody td {
+  border-right: 1px solid #343a45;
 }
 
 /* ================== LOUNGE ================== */
@@ -475,7 +479,6 @@ tr {
   justify-content: center;
   align-items: center;
 }
-
 
 /* ================== LINK PAGE ================== */
 .linkpage {
