@@ -65,7 +65,7 @@ const Login = () => {
                 <section className="auth__section">
                     <h1 className="auth__title">You are logged in!</h1>
 
-                    <Link to="/" className="link__none">Navigate to the Home page.</Link>
+                    <Link to="/" className="link__none">Navigate to the <span className="bold">Home</span> page.</Link>
                 </section>
             ) : (
                 <div className="auth">
