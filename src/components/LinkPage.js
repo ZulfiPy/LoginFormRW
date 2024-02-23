@@ -31,21 +31,21 @@ const LinkPage = () => {
                 ? (
                     <>
                         <button
-                            className="page__main__button"
+                            className="little__button"
                             type="button"
                             onClick={signOut}
                         >
-                            SIGN OUT
+                            Sign Out
                         </button>
                     </>
                 ) : (
                     <>
                         <button
-                            className="page__main__button"
+                            className="little__button"
                             type="button"
                             onClick={() => navigate('/login')}
                         >
-                            SIGN IN
+                            Sign In
                         </button>
                     </>
                 )}
