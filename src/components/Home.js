@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
+import useAuth from "../hooks/useAuth";
 
-const Home =  () => {
+const Home = () => {
+    const { auth } = useAuth();
     const logout = useLogout();
+    const navigate = useNavigate();
 
     const signOut = async () => {
         await logout();
+        navigate('/login');
     }
 
     return (
@@ -24,13 +28,25 @@ const Home =  () => {
             <Link to="/linkpage" className="effect__link"><span className="bold">Link</span>  page</Link>
             <br />
 
-            <button
-                className="page__main__button"
-                type="button"
-                onClick={signOut}
-            >
-                Sign Out
-            </button>
+            {auth?.accessToken ?
+                (
+                    <button
+                        className="little__button"
+                        type="button"
+                        onClick={signOut}
+                    >
+                        Sign Out
+                    </button>
+                ) : (
+                    <button
+                        className="little__button"
+                        type="button"
+                        onClick={() => navigate('/login')}
+                    >
+                        Sign In
+                    </button>
+
+                )}
         </section>
     )
 }

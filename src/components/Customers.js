@@ -10,7 +10,6 @@ const Customers = () => {
     const location = useLocation();
 
     useEffect(() => {
-        console.log('getCustomers mounts');
         let isMounted = true;
         const controller = new AbortController();
 
@@ -19,7 +18,7 @@ const Customers = () => {
                 const response = await axiosPrivate.get('/api/customers', {
                     signal: controller.signal
                 });
-                console.log('getCustomers', JSON.stringify(response.data));
+                console.log('getCustomers', response.data);
                 isMounted && setCustomerData((response.data));
             } catch (err) {
                 if (isMounted) {
@@ -32,7 +31,6 @@ const Customers = () => {
         getCustomers()
 
         return () => {
-            console.log('getCustomers unmounts');
             isMounted = false;
             controller.abort();
         }
@@ -85,7 +83,7 @@ const Customers = () => {
 
             <button
                 type="button"
-                className="back__button"
+                className="little__button"
                 onClick={() => navigate(-1)}
             >
                 Go Back
