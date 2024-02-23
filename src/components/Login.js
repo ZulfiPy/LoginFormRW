@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-    const { setAuth } = useAuth();
+    const { setAuth, persist, setPersist } = useAuth();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -58,6 +58,14 @@ const Login = () => {
             }
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem('persist', persist)
+    }, [persist]);
+
+    const togglePersist = () => {
+        setPersist(prev => !prev);
+    };
 
     return (
         <>
@@ -124,7 +132,13 @@ const Login = () => {
 
                                 <div className="login__check">
                                     <div className="login__check-box">
-                                        <input type="checkbox" className="login__check-input" id="user-check" />
+                                        <input
+                                            type="checkbox"
+                                            className="login__check-input"
+                                            id="user-check"
+                                            checked={persist}
+                                            onChange={togglePersist}
+                                        />
                                         <label htmlFor="user-check" className="login__check-label">Remember Me</label>
                                     </div>
 
