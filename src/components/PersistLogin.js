@@ -11,10 +11,6 @@ const fetchRefreshToken = async () => {
 const PersistLogin = () => {
     const { persist, auth, setAuth } = useAuth();
 
-    console.log(auth?.accessToken)
-    console.log(persist)
-    console.log(document.visibilityState)
-
         const { isLoading } = useQuery('refreshToken', fetchRefreshToken, {
             enabled: !auth?.accessToken && persist && document.visibilityState === 'visible',
             onSuccess: (data) => {
