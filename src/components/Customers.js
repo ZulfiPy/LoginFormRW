@@ -1,80 +1,65 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useQuery } from "react-query";
 
 const Customers = () => {
-    const [customerData, setCustomerData] = useState();
     const axiosPrivate = useAxiosPrivate();
 
     const navigate = useNavigate();
     const location = useLocation();
 
-    useEffect(() => {
-        let isMounted = true;
-        const controller = new AbortController();
+    const fetchInterceptors = async () => {
+        const { data } = await axiosPrivate.get('/api/customers');
+        return data;
+    }
 
-        const getCustomers = async () => {
-            try {
-                const response = await axiosPrivate.get('/api/customers', {
-                    signal: controller.signal
-                });
-                console.log('getCustomers', response.data);
-                isMounted && setCustomerData((response.data));
-            } catch (err) {
-                if (isMounted) {
-                    console.log('error in getCustomers', err);
-                    navigate('/login', { state: { from: location }, replace: true });
-                }
+    const { data, isLoading, error } = useQuery('interceptors', fetchInterceptors, {
+        onError: (error) => {
+            if (error) {
+                console.log('navigating to the login page because error occured', error);
+                navigate('/login', { state: { from: location }, replace: true });
             }
         }
+    });
 
-        getCustomers()
-
-        return () => {
-            isMounted = false;
-            controller.abort();
-        }
-    }, []);
-
+    if (isLoading) return <p>is loading....</p>
+    if (error) return <p>error</p>
+    
     return (
         <section className="customers">
             <h1 className="page__title">VIEW CUSTOMERS</h1>
-            {customerData ? (
-                <table className="customers__table">
-                    <thead>
-                        <tr>
-                            <th>First name</th>
-                            <th>Last name</th>
-                            <th>ISIKUKOOD</th>
-                            <th>Driver License Number</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Vehicle</th>
-                            <th>RUD</th>
+            <table className="customers__table">
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>ISIKUKOOD</th>
+                        <th>Driver License Number</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Vehicle</th>
+                        <th>RUD</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {data.map((record, index) => (
+                        <tr key={index}>
+                            <td>{record.firstname}</td>
+                            <td>{record.lastname}</td>
+                            <td>{record.isikukood}</td>
+                            <td>{record.driverLicenseNumber}</td>
+                            <td>{record.address}</td>
+                            <td>{record.email}</td>
+                            <td>{record.phone}</td>
+                            <td>{record.vehicle ? record.vehicle : 'None'}</td>
+                            <td>RUD icons</td>
                         </tr>
-                    </thead>
-
-                    <tbody>
-                        {customerData.map((record, index) => (
-                            <tr key={index}>
-                                <td>{record.firstname}</td>
-                                <td>{record.lastname}</td>
-                                <td>{record.isikukood}</td>
-                                <td>{record.driverLicenseNumber}</td>
-                                <td>{record.address}</td>
-                                <td>{record.email}</td>
-                                <td>{record.phone}</td>
-                                <td>{record.vehicle ? record.vehicle : 'None'}</td>
-                                <td>RUD icons</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            ) : (
-                <h1>no data to display</h1>
-            )}
-
+                    ))}
+                </tbody>
+            </table>
             <br />
             <Link className="effect__link" to="/">
                 Go to the <span className="bold">Home</span> page
