@@ -371,6 +371,11 @@ body {
   font-weight: 600;
 }
 
+.RUD_cell svg {
+  margin: 0.25rem;
+}
+
+
 /* ================== LAYOUT ================== */
 .app {
   display: flex;
@@ -420,8 +425,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  max-width: 950px;
+  height: 100vh;
+  max-width: 1000px;
   width: 100%;
   margin: auto;
 }
@@ -430,17 +435,17 @@ body {
   background: var(--black-color);
   color: var(--white-color);
   border-collapse: collapse;
-  border-radius: 0.3rem;
-  max-width: 900px;
+  border-radius: 2rem;
+  max-width: 100%;
   width: 100%;
   box-shadow: 0 5px 10px var(--white-color);
   text-align: center;
   border-collapse: collapse;
   margin: auto;
-  height: 320px;
+  height: 100%;
   display: block;
   overflow: auto;
-  padding: 0.25rem;
+  padding: 1rem;
 }
 
 .customers__table th {
