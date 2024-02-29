@@ -17,6 +17,14 @@ const User = () => {
             >
                 VIEW CUSTOMERS
             </button>
+
+            <button
+                type="button"
+                className="little__button"
+                onClick={() => navigate(-1)}
+            >
+                Go Back
+            </button>
         </section>
     )
 }

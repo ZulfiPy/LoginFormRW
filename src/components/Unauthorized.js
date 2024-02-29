@@ -9,11 +9,11 @@ const Unauthorized = () => {
             <p>You do not have an access to the requested page.</p>
 
             <button
-                className="page__main__button"
                 type="button"
-                onClick={() => navigate('/linkpage')}
+                className="little__button"
+                onClick={() => navigate(-1)}
             >
-                Go the Link page
+                Go Back
             </button>
         </section>
     )
