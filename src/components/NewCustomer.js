@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faA, faB, faIdBadge, faIdCard, faLocationDot, faAt, faPhone, faCar } from "@fortawesome/free-solid-svg-icons";
+import { faA, faB, faIdBadge, faIdCard, faLocationDot, faAt, faPhone, faCar, faBackward } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
@@ -57,168 +57,183 @@ const NewCustomer = () => {
     }
 
     return (
-        <div className="new__customer">
-            <section className="new__customer__section">
-                <h1 className="new__customer__title">New Customer</h1>
+        <>
+            <button
+                type="button"
+                className="back__button__left__up"
+                onClick={() => navigate(-1)}
+            >
+                <FontAwesomeIcon icon={faBackward} />  Back
+            </button>
+            <div className="new__customer">
+                <section className="new__customer__section">
+                    <h1 className="new__customer__title">New Customer</h1>
 
-                <form className="new__customer__form" onSubmit={handleAddNewCustomer}>
+                    <form className="new__customer__form" onSubmit={handleAddNewCustomer}>
 
-                    <div className="new__customer__inputs">
+                        <div className="new__customer__inputs">
 
 
-                        <section className="new__customer__box">
-                            <label htmlFor="firstname">First Name:</label>
+                            <section className="new__customer__box">
+                                <label htmlFor="firstname">First Name:</label>
 
-                            <section className="new__customer__input__box">
-                                <input
-                                    type="text"
-                                    id="firstname"
-                                    placeholder="First name"
-                                    required
-                                    className="new__customer__input"
-                                    autoComplete="off"
-                                    value={firstname}
-                                    onChange={(e) => setfirstname(e.target.value)}
-                                />
-                                <FontAwesomeIcon icon={faA} />
+                                <section className="new__customer__input__box">
+                                    <input
+                                        type="text"
+                                        id="firstname"
+                                        placeholder="First name"
+                                        required
+                                        className="new__customer__input"
+                                        autoComplete="off"
+                                        value={firstname}
+                                        onChange={(e) => setfirstname(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faA} />
+                                </section>
                             </section>
-                        </section>
 
-                        <section className="new__customer__box">
-                            <label htmlFor="lastname">Last Name:</label>
+                            <section className="new__customer__box">
+                                <label htmlFor="lastname">Last Name:</label>
 
-                            <section className="new__customer__input__box">
-                                <input
-                                    type="text"
-                                    id="lastname"
-                                    placeholder="Last name"
-                                    required
-                                    className="new__customer__input"
-                                    autoComplete="off"
-                                    value={lastname}
-                                    onChange={(e) => setlastname(e.target.value)}
-                                />
-                                <FontAwesomeIcon icon={faB} />
+                                <section className="new__customer__input__box">
+                                    <input
+                                        type="text"
+                                        id="lastname"
+                                        placeholder="Last name"
+                                        required
+                                        className="new__customer__input"
+                                        autoComplete="off"
+                                        value={lastname}
+                                        onChange={(e) => setlastname(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faB} />
+                                </section>
                             </section>
-                        </section>
 
-                        <section className="new__customer__box">
-                            <label htmlFor="isikukood">Isikukood:</label>
+                            <section className="new__customer__box">
+                                <label htmlFor="isikukood">Isikukood:</label>
 
-                            <section className="new__customer__input__box">
-                                <input
-                                    type="text"
-                                    id="isikukood"
-                                    placeholder="Isikukood"
-                                    required
-                                    className="new__customer__input"
-                                    autoComplete="off"
-                                    value={isikukood}
-                                    onChange={(e) => setIsikukood(e.target.value)}
-                                />
-                                <FontAwesomeIcon icon={faIdBadge} />
+                                <section className="new__customer__input__box">
+                                    <input
+                                        type="text"
+                                        id="isikukood"
+                                        placeholder="Isikukood"
+                                        required
+                                        className="new__customer__input"
+                                        autoComplete="off"
+                                        value={isikukood}
+                                        onChange={(e) => setIsikukood(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faIdBadge} />
+                                </section>
                             </section>
-                        </section>
 
-                        <section className="new__customer__box">
-                            <label className="driverLicenseNumber">Driver License Number:</label>
+                            <section className="new__customer__box">
+                                <label className="driverLicenseNumber">Driver License Number:</label>
 
-                            <section className="new__customer__input__box">
-                                <input
-                                    type="text"
-                                    id="driverLicenseNumber"
-                                    placeholder="Driver License Number:"
-                                    required
-                                    className="new__customer__input"
-                                    autoComplete="off"
-                                    value={driverLicenseNumber}
-                                    onChange={(e) => setDriverLicenseNumber(e.target.value)}
-                                />
-                                <FontAwesomeIcon icon={faIdCard} />
+                                <section className="new__customer__input__box">
+                                    <input
+                                        type="text"
+                                        id="driverLicenseNumber"
+                                        placeholder="Driver License Number:"
+                                        required
+                                        className="new__customer__input"
+                                        autoComplete="off"
+                                        value={driverLicenseNumber}
+                                        onChange={(e) => setDriverLicenseNumber(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faIdCard} />
+                                </section>
                             </section>
-                        </section>
 
-                        <section className="new__customer__box">
-                            <label htmlFor="address">Address:</label>
+                            <section className="new__customer__box">
+                                <label htmlFor="address">Address:</label>
 
-                            <section className="new__customer__input__box">
-                                <input
-                                    type="text"
-                                    id="address"
-                                    placeholder="Address"
-                                    required
-                                    className="new__customer__input"
-                                    autoComplete="off"
-                                    value={address}
-                                    onChange={(e) => setAddress(e.target.value)}
-                                />
-                                <FontAwesomeIcon icon={faLocationDot} />
+                                <section className="new__customer__input__box">
+                                    <input
+                                        type="text"
+                                        id="address"
+                                        placeholder="Address"
+                                        required
+                                        className="new__customer__input"
+                                        autoComplete="off"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faLocationDot} />
+                                </section>
                             </section>
-                        </section>
 
-                        <section className="new__customer__box">
-                            <label htmlFor="email">Email:</label>
+                            <section className="new__customer__box">
+                                <label htmlFor="email">Email:</label>
 
-                            <section className="new__customer__input__box">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    placeholder="Email"
-                                    required
-                                    className="new__customer__input"
-                                    autoComplete="off"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                <FontAwesomeIcon icon={faAt} />
+                                <section className="new__customer__input__box">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        placeholder="Email"
+                                        required
+                                        className="new__customer__input"
+                                        autoComplete="off"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faAt} />
+                                </section>
                             </section>
-                        </section>
 
-                        <section className="new__customer__box">
-                            <label htmlFor="phone">Phone:</label>
+                            <section className="new__customer__box">
+                                <label htmlFor="phone">Phone:</label>
 
-                            <section className="new__customer__input__box">
-                                <input
-                                    type="text"
-                                    id="phone"
-                                    placeholder="Phone"
-                                    required
-                                    className="new__customer__input"
-                                    autoComplete="off"
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
-                                />
-                                <FontAwesomeIcon icon={faPhone} />
+                                <section className="new__customer__input__box">
+                                    <input
+                                        type="text"
+                                        id="phone"
+                                        placeholder="Phone"
+                                        required
+                                        className="new__customer__input"
+                                        autoComplete="off"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faPhone} />
+                                </section>
                             </section>
-                        </section>
 
-                        <section className="new__customer__box">
-                            <label htmlFor="vehicle">Vehicle:</label>
+                            <section className="new__customer__box">
+                                <label htmlFor="vehicle">Vehicle:</label>
 
-                            <section className="new__customer__input__box">
-                                <input
-                                    type="text"
-                                    id="vehicle"
-                                    placeholder="Vehicle"
-                                    required
-                                    className="new__customer__input"
-                                    autoComplete="off"
-                                    value={vehicle}
-                                    onChange={(e) => setVehicle(e.target.value)}
-                                />
-                                <FontAwesomeIcon icon={faCar} />
+                                <section className="new__customer__input__box">
+                                    <input
+                                        type="text"
+                                        id="vehicle"
+                                        placeholder="Vehicle"
+                                        required
+                                        className="new__customer__input"
+                                        autoComplete="off"
+                                        value={vehicle}
+                                        onChange={(e) => setVehicle(e.target.value)}
+                                    />
+                                    <FontAwesomeIcon icon={faCar} />
+                                </section>
                             </section>
-                        </section>
 
-                        <p className={errMsg ? "auth__errMsg" : "offScreen"}>
-                            {errMsg}
-                        </p>
+                            <p className={errMsg ? "auth__errMsg" : "offScreen"}>
+                                {errMsg}
+                            </p>
+                        </div>
 
                         <button type="submit" className="add__button">ADD NEW CUSTOMER</button>
-                    </div>
-                </form>
-            </section>
-        </div>
+                    </form>
+                    <button
+                        type="button"
+                        className="little__button"
+                        onClick={() => navigate(-1)}
+                    >Go Back
+                    </button>
+                </section>
+            </div>
+        </>
     )
 }
 

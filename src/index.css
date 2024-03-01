@@ -601,11 +601,11 @@ body {
 .add__button {
   width: 100%;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   background-color: var(--white-color);
   border-radius: 4rem;
   color: var(--black-color);
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -614,3 +614,27 @@ body {
 }
 
 /* ================== TEST BEFORE COMMIT ================== */
+
+.back__button__left__up {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: none;
+  outline: none;
+  max-width: 5rem;
+  width: 100%;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  background-color: transparent;
+  border-radius: 4rem;
+  color: var(--white-color);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 0.15rem solid black;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.back__button__left__up:hover {
+  text-decoration: underline;
+}
