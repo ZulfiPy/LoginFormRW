@@ -72,6 +72,7 @@ const Customers = () => {
             <button
                 type="button"
                 className="page__main__button"
+                onClick={() => navigate('/newcustomer')}
             >
                 <FontAwesomeIcon icon={faUserPlus} /> NEW CUSTOMER<br />
             </button>

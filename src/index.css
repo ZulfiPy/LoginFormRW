@@ -233,6 +233,22 @@ img {
   }
 }
 
+@media screen and (min-width: 576px) {
+  .new__customer {
+    justify-content: center;
+  }
+
+  .new__customer__form {
+    width: 420px;
+    padding-inline: 2.5rem;
+  }
+
+  .new__customer {
+    margin-bottom: 2rem;
+  }
+}
+
+
 /* ================== CUSTOM ================== */
 
 body {
@@ -507,6 +523,94 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* ================== NEW CUSTOMER ================== */
+.new__customer {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+}
+
+.new__customer__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.new__customer__form {
+  position: relative;
+  margin-inline: 1.5rem;
+  background-color: hsla(0, 0%, 100%, .01);
+  border: 2px solid hsla(0, 0%, 100%, .7);
+  padding: 2.5rem 1rem;
+  color: var(--white-color);
+  border-radius: 1rem;
+  backdrop-filter: blur(16px);
+}
+
+.new__customer__title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  color: var(--white-color);
+}
+
+.new__customer__inputs,
+.new__customer__input__box {
+  display: grid;
+}
+
+.new__customer__inputs {
+  row-gap: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.new__customer__box label {
+  color: var(--black-color);
+  cursor: pointer;
+}
+
+.new__customer__input__box {
+  grid-template-columns: 1fr max-content;
+  column-gap: .75rem;
+  align-items: center;
+  border: 2px solid hsla(0, 0%, 100%, .7);
+  padding-inline: 1.25rem;
+  border-radius: 4rem;
+}
+
+.new__customer__input,
+.add__button {
+  border: none;
+  outline: none;
+}
+
+.new__customer__input {
+  width: 100%;
+  background: none;
+  color: var(--white-color);
+  padding-block: 1rem;
+}
+
+.new__customer__input::placeholder {
+  color: var(--white-color);
+}
+
+.add__button {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--white-color);
+  border-radius: 4rem;
+  color: var(--black-color);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add__button:hover {
+  text-decoration: underline;
 }
 
 /* ================== TEST BEFORE COMMIT ================== */
