@@ -16,6 +16,7 @@ import Customers from "./components/Customers";
 import Lounge from "./components/Lounge";
 import RequireAuth from "./components/RequireAuth";
 import PersistLogin from "./components/PersistLogin";
+import NewCustomer from "./components/NewCustomer";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,10 @@ function App() {
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Editor, ROLES.User]} />}>
                 <Route path="customers" element={<Customers />} />
+              </Route>
+
+              <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Editor, ROLES.User]} />} >
+                <Route path="newcustomer" element={<NewCustomer />} />
               </Route>
             </Route>
 

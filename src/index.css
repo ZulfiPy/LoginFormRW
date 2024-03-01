@@ -233,6 +233,22 @@ img {
   }
 }
 
+@media screen and (min-width: 576px) {
+  .new__customer {
+    justify-content: center;
+  }
+
+  .new__customer__form {
+    width: 420px;
+    padding-inline: 2.5rem;
+  }
+
+  .new__customer {
+    margin-bottom: 2rem;
+  }
+}
+
+
 /* ================== CUSTOM ================== */
 
 body {
@@ -371,6 +387,11 @@ body {
   font-weight: 600;
 }
 
+.RUD_cell svg {
+  margin: 0.25rem;
+}
+
+
 /* ================== LAYOUT ================== */
 .app {
   display: flex;
@@ -420,8 +441,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  max-width: 950px;
+  height: 100vh;
+  max-width: 1000px;
   width: 100%;
   margin: auto;
 }
@@ -430,17 +451,17 @@ body {
   background: var(--black-color);
   color: var(--white-color);
   border-collapse: collapse;
-  border-radius: 0.3rem;
-  max-width: 900px;
+  border-radius: 2rem;
+  max-width: 100%;
   width: 100%;
   box-shadow: 0 5px 10px var(--white-color);
   text-align: center;
   border-collapse: collapse;
   margin: auto;
-  height: 320px;
+  height: 100%;
   display: block;
   overflow: auto;
-  padding: 0.25rem;
+  padding: 1rem;
 }
 
 .customers__table th {
@@ -504,4 +525,116 @@ body {
   align-items: center;
 }
 
+/* ================== NEW CUSTOMER ================== */
+.new__customer {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+}
+
+.new__customer__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.new__customer__form {
+  position: relative;
+  margin-inline: 1.5rem;
+  background-color: hsla(0, 0%, 100%, .01);
+  border: 2px solid hsla(0, 0%, 100%, .7);
+  padding: 2.5rem 1rem;
+  color: var(--white-color);
+  border-radius: 1rem;
+  backdrop-filter: blur(16px);
+}
+
+.new__customer__title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  color: var(--white-color);
+}
+
+.new__customer__inputs,
+.new__customer__input__box {
+  display: grid;
+}
+
+.new__customer__inputs {
+  row-gap: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.new__customer__box label {
+  color: var(--black-color);
+  cursor: pointer;
+}
+
+.new__customer__input__box {
+  grid-template-columns: 1fr max-content;
+  column-gap: .75rem;
+  align-items: center;
+  border: 2px solid hsla(0, 0%, 100%, .7);
+  padding-inline: 1.25rem;
+  border-radius: 4rem;
+}
+
+.new__customer__input,
+.add__button {
+  border: none;
+  outline: none;
+}
+
+.new__customer__input {
+  width: 100%;
+  background: none;
+  color: var(--white-color);
+  padding-block: 1rem;
+}
+
+.new__customer__input::placeholder {
+  color: var(--white-color);
+}
+
+.add__button {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: var(--white-color);
+  border-radius: 4rem;
+  color: var(--black-color);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add__button:hover {
+  text-decoration: underline;
+}
+
 /* ================== TEST BEFORE COMMIT ================== */
+
+.back__button__left__up {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: none;
+  outline: none;
+  max-width: 5rem;
+  width: 100%;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  background-color: transparent;
+  border-radius: 4rem;
+  color: var(--white-color);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 0.15rem solid black;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.back__button__left__up:hover {
+  text-decoration: underline;
+}

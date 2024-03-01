@@ -1,48 +1,46 @@
-import { useState, useEffect } from "react"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useQuery } from "react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserPlus, faEye, faUserPen, faX, faBackward } from "@fortawesome/free-solid-svg-icons";
 
 const Customers = () => {
-    const [customerData, setCustomerData] = useState();
     const axiosPrivate = useAxiosPrivate();
 
     const navigate = useNavigate();
     const location = useLocation();
 
-    useEffect(() => {
-        let isMounted = true;
-        const controller = new AbortController();
+    const fetchInterceptors = async () => {
+        const { data } = await axiosPrivate.get('/api/customers');
+        return data;
+    }
 
-        const getCustomers = async () => {
-            try {
-                const response = await axiosPrivate.get('/api/customers', {
-                    signal: controller.signal
-                });
-                console.log('getCustomers', response.data);
-                isMounted && setCustomerData((response.data));
-            } catch (err) {
-                if (isMounted) {
-                    console.log('error in getCustomers', err);
-                    navigate('/login', { state: { from: location }, replace: true });
-                }
+    const { data, isLoading, error } = useQuery('interceptors', fetchInterceptors, {
+        onError: (error) => {
+            if (error) {
+                console.log('navigating to the login page because error occured', error);
+                navigate('/login', { state: { from: location }, replace: true });
             }
         }
+    });
 
-        getCustomers()
-
-        return () => {
-            isMounted = false;
-            controller.abort();
-        }
-    }, []);
+    if (isLoading) return <p>is loading....</p>
+    if (error) return <p>error</p>
 
     return (
-        <section className="customers">
-            <h1 className="page__title">VIEW CUSTOMERS</h1>
-            {customerData ? (
+        <>
+            <button
+                type="button"
+                className="back__button__left__up"
+                onClick={() => navigate(-1)}
+            >
+                <FontAwesomeIcon icon={faBackward} /> Back
+            </button>
+            <section className="customers">
+                <h1 className="page__title">VIEW CUSTOMERS</h1>
                 <table className="customers__table">
                     <thead>
-                        <tr>
+                        <tr className="customers__table__head__row">
                             <th>First name</th>
                             <th>Last name</th>
                             <th>ISIKUKOOD</th>
@@ -51,13 +49,13 @@ const Customers = () => {
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Vehicle</th>
-                            <th>RUD</th>
+                            <th>(Read/Upd./Del.)</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        {customerData.map((record, index) => (
-                            <tr key={index}>
+                        {data.map((record, index) => (
+                            <tr key={index} className="customers__row">
                                 <td>{record.firstname}</td>
                                 <td>{record.lastname}</td>
                                 <td>{record.isikukood}</td>
@@ -66,29 +64,28 @@ const Customers = () => {
                                 <td>{record.email}</td>
                                 <td>{record.phone}</td>
                                 <td>{record.vehicle ? record.vehicle : 'None'}</td>
-                                <td>RUD icons</td>
+                                <td className="RUD_cell">
+                                    <FontAwesomeIcon icon={faEye} />
+                                    <FontAwesomeIcon icon={faUserPen} />
+                                    <FontAwesomeIcon icon={faX} />
+                                </td>
                             </tr>
                         ))}
                     </tbody>
+
                 </table>
-            ) : (
-                <h1>no data to display</h1>
-            )}
 
-            <br />
-            <Link className="effect__link" to="/">
-                Go to the <span className="bold">Home</span> page
-            </Link>
-            <br />
+                <br />
 
-            <button
-                type="button"
-                className="little__button"
-                onClick={() => navigate(-1)}
-            >
-                Go Back
-            </button>
-        </section>
+                <button
+                    type="button"
+                    className="page__main__button"
+                    onClick={() => navigate('/newcustomer')}
+                >
+                    <FontAwesomeIcon icon={faUserPlus} /> NEW CUSTOMER<br />
+                </button>
+            </section>
+        </>
     )
 }
 
